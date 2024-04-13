@@ -1,0 +1,247 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tax-form {
+  margin-top: 4vw;
+  padding: 6rem 5rem;
+  width: 50vw;
+  border: solid 1px black;
+}
+
+.lable-title {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+.input-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+}
+
+input,
+select {
+  width: 100%;
+  height: 1.6rem;
+  border-radius: 0px;
+  border-width: 1px;
+  padding: 0.2rem;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-icon {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 100px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.exclamation {
+  position: relative;
+  right: 35px;
+  top: 0px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 4px;
+}
+
+.submit-btn {
+  background-color: #6559f5;
+  color: white;
+  width: 95%;
+  height: 2.2rem;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border-width: 0px;
+}
+
+#closeBtn {
+  width: fit-content;
+  border-width: 0px;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 2rem;
+  height: 1.23rem;
+  width: 1rem;
+  cursor: pointer;
+}
+
+.tooltip .arrow-bottom:after {
+  content: " ";
+  position: relative;
+  right: 4.3rem;
+  top: 36px;
+  border-top: 10px solid #4c5d6b;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: none;
+  color: #4c5d6b;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #4c5d6b;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 36px;
+  left: 10px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.hide:focus-within,
+.hide:hover {
+  visibility: visible;
+}
+
+#showTax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#taxAble {
+  font-weight: bold;
+  font-size: 26px;
+  margin: 0px;
+}
+
+.trigger {
+  text-align: center;
+  padding: 7px 13px;
+  background: #3e3e3e;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: cursive;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+  width: 70vw;
+  height: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.exclamation-mark {
+  position: relative;
+  font-size: 25px;
+  right: 5px;
+  bottom: 3px;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+@media screen and (max-width: 700px) {
+  .box {
+    width: 70%;
+  }
+  .popup {
+    width: 70%;
+  }
+  .lable-title {
+    gap: 3px;
+  }
+}
+@media only screen and (min-width: 240px) and (max-width: 768px) {
+  .box {
+    display: block;
+    float: none;
+    margin: 40px auto;
+  }
+}
