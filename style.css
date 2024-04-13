@@ -133,7 +133,7 @@ input[type="number"] {
   position: absolute;
   z-index: 1;
   bottom: 36px;
-  left: 10px;
+  left: -0.7rem;
 }
 
 .tooltip:hover .tooltiptext {
