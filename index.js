@@ -89,14 +89,9 @@ function calculateTax(e) {
     // Calculate final tax amount
     const taxAmount = taxableIncome * taxRate;
     console.log(taxAmount)
-    // Display modal with calculated tax
     Tax.textContent = taxAmount.toString();
-    deductionIcon.style.display = "none";
-    deductionIcon.style.border = "0px";
-    grossIncomeIcon.style.display = "none";
-    grossIncomeIcon.style.border = "0px";
-    extraIncomeIcon.style.display = "none";
-    extraIncomeIcon.style.border = "0px";
+
+    // Display modal with calculated tax
     toggleModal();
 }
 
@@ -115,12 +110,27 @@ if (submitBtn)
     submitBtn.addEventListener("click", (e) => {
         calculateTax(e);
     });
+
+// Function to show error icon
+const showErrorIcon = (element) => {
+    element.style.display = "inline"; // Show the icon
+}
+
+// Function to hide error icon
+const hideErrorIcon = (element) => {
+    element.style.display = "none"; // Hide the icon
+}
+
+
 // Validate numeric inputs
 const validateGrossIncome = (value) => {
     if (isNaN(value) || parseFloat(value) <= 0) {
         grossIncomeError.textContent = "Gross Income must be a positive number";
-        grossIncomeIcon.style.color = "red";
+        grossIncomeIcon.style.color = "red"; // Show error icon in red color
         return false;
+    } else {
+        hideErrorIcon(grossIncomeIcon);
+        grossIncomeIcon.style.color = ""; // Reset icon color if no error
     }
     return true;
 }
@@ -128,8 +138,11 @@ const validateGrossIncome = (value) => {
 const validateExtraIncome = (value) => {
     if (value && (isNaN(value) || parseFloat(value) < 0)) {
         extraIncomeError.textContent = "Extra Income must be a non-negative number";
-        extraIncomeIcon.style.color = "red";
+        extraIncomeIcon.style.color = "red"; // Show error icon in red color
         return false;
+    } else {
+        hideErrorIcon(extraIncomeIcon)
+        extraIncomeIcon.style.color = ""; // Reset icon color if no error
     }
     return true;
 }
@@ -137,8 +150,11 @@ const validateExtraIncome = (value) => {
 const validateDeductionAmmout = (value) => {
     if (value && (isNaN(value) || parseFloat(value) < 0)) {
         deductionError.textContent = "Deductions must be a non-negative number";
-        deductionIcon.style.color = "red";
+        deductionIcon.style.color = "red"; // Show error icon in red color
         return false;
+    } else {
+        hideErrorIcon(deductionIcon)
+        deductionIcon.style.color = ""; // Reset icon color if no error
     }
     return true;
 }
