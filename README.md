@@ -48,6 +48,8 @@ Add screenshots of the Tax Calculator Web Application here.
 
 ### With All input fields
 ![image](https://github.com/VitthalGund/tax-calculator/assets/97181033/77554575-e45a-44b5-8b19-a90734f66246)
+![image](https://github.com/VitthalGund/tax-calculator/assets/97181033/9e0ecb99-188e-4c33-97fe-09ff7540f232)
+
 
 
 
