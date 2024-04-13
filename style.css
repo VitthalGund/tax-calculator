@@ -8,7 +8,7 @@
 .tax-form {
   margin-top: 4vw;
   padding: 6rem 5rem;
-  width: 50vw;
+  width: 30vw;
   border: solid 1px black;
 }
 
@@ -199,6 +199,9 @@ input[type="number"] {
   border-radius: 0.5rem;
   width: 70vw;
   height: 50vw;
+  min-width: 30rem;
+  min-height: 30rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -238,10 +241,48 @@ input[type="number"] {
     gap: 3px;
   }
 }
-@media only screen and (min-width: 240px) and (max-width: 768px) {
+@media screen and (min-width: 700px) {
+  .box {
+    width: 70%;
+  }
+  .popup {
+    width: 70%;
+  }
+  .lable-title {
+    gap: 3px;
+  }
+  .tax-form {
+    margin-top: 4vw;
+    padding: 3rem 3rem;
+    width: 50vw;
+    min-width: 50%;
+    border: solid 1px black;
+  }
+  .modal-content {
+    width: 60vw;
+    height: 30vw;
+    min-width: 15rem;
+    min-height: 20rem;
+  }
+}
+@media only screen and (min-width: 240px) and (max-width: 676px) {
   .box {
     display: block;
     float: none;
     margin: 40px auto;
+  }
+  .tax-form {
+    margin-top: 4vw;
+    padding: 3rem 3rem;
+    width: 30vw;
+    min-width: 79%;
+    border: solid 1px black;
+  }
+
+  .modal-content {
+    width: 70vw;
+    height: 50vw;
+    min-width: 15rem;
+    min-height: 20rem;
   }
 }
