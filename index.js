@@ -51,40 +51,28 @@ const Tax = document.getElementById("taxAble");
 
 function calculateTax(e) {
     e.preventDefault();
-    // Validate inputs (basic validation, can be extended)
-    console.log({ grossIncomeInput: grossIncomeInput.value, extraIncomeInput: extraIncomeInput.value, deductionsInput: deductionsInput.value, ageGroup: ageGroup.value })
-    let hasError = false;
-    if (!grossIncomeInput?.value) {
-        grossIncomeError.textContent = parseInt(grossIncomeInput?.value) > 0 ? "Enter valid input" : "Gross Income connot be negative or zero";
-        grossIncomeIcon.style.color = "red";
-        hasError = true;
-        console.log("back");
+    // Parse input values
+    const grossIncome = parseFloat(grossIncomeInput.value);
+    const extraIncome = extraIncomeInput.value ? parseFloat(extraIncomeInput.value) : 0;
+    const deductions = deductionsInput.value ? parseFloat(deductionsInput.value) : 0;
+
+    const isGrossIncomeValid = validateGrossIncome(grossIncome);
+    const isExtraIncomeValid = validateExtraIncome(extraIncome);
+    const isDeductionsValid = validateDeductionAmmout(deductions);
+
+    if (!isGrossIncomeValid || !isExtraIncomeValid || !isDeductionsValid) {
+        return; // Exit if any validation fails
     }
-    if (!extraIncomeInput?.value || +extraIncomeInput?.value > 0) {
-        console.log("back");
-        extraIncomeError.textContent = parseInt(extraIncomeInput?.value) > 0 ? "Enter valid input" : "Extra Income connot be negative or zero";
-        extraIncomeIcon.style.color = "red";
-        extraIncomeInput.value = 0;
-    }
-    if (!deductionsInput?.value || + deductionsInput?.value > 0) {
-        console.log("back");
-        deductionError.textContent = parseInt(deductionsInput?.value) > 0 ? "Enter valid input" : "Deduction About connot be negative or zero";
-        deductionIcon.style.color = "red";
-        deductionsInput.value = 0;
-    }
+
 
     if (!ageGroup?.value) {
         console.log("back");
         hasError = true;
     }
 
-    if (hasError) {
-        console.log("back");
-        return; // Don't proceed if there are errors
-    }
 
     // Calculate taxable income
-    const totalIncome = parseFloat(grossIncomeInput.value) + parseFloat(extraIncomeInput.value) - parseFloat(deductionsInput.value);
+    const totalIncome = grossIncome + extraIncome - deductionsInput.value;
     const taxableIncome = Math.max(0, totalIncome - 800000); // Ensures minimum taxable income is 0
 
     // Calculate tax based on age
@@ -104,8 +92,11 @@ function calculateTax(e) {
     // Display modal with calculated tax
     Tax.textContent = taxAmount.toString();
     deductionIcon.style.display = "none";
+    deductionIcon.style.border = "0px";
     grossIncomeIcon.style.display = "none";
+    grossIncomeIcon.style.border = "0px";
     extraIncomeIcon.style.display = "none";
+    extraIncomeIcon.style.border = "0px";
     toggleModal();
 }
 
@@ -124,20 +115,30 @@ if (submitBtn)
     submitBtn.addEventListener("click", (e) => {
         calculateTax(e);
     });
-
-
+// Validate numeric inputs
 const validateGrossIncome = (value) => {
-    if (!value || !value.isnumeric()) {
+    if (isNaN(value) || parseFloat(value) <= 0) {
+        grossIncomeError.textContent = "Gross Income must be a positive number";
         grossIncomeIcon.style.color = "red";
+        return false;
     }
+    return true;
 }
+
 const validateExtraIncome = (value) => {
-    if (value || !value.isnumeric()) {
+    if (value && (isNaN(value) || parseFloat(value) < 0)) {
+        extraIncomeError.textContent = "Extra Income must be a non-negative number";
         extraIncomeIcon.style.color = "red";
+        return false;
     }
+    return true;
 }
+
 const validateDeductionAmmout = (value) => {
-    if (value || !value.isnumeric()) {
+    if (value && (isNaN(value) || parseFloat(value) < 0)) {
+        deductionError.textContent = "Deductions must be a non-negative number";
         deductionIcon.style.color = "red";
+        return false;
     }
+    return true;
 }
